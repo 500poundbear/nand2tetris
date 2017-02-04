@@ -1,0 +1,12 @@
+// DONE
+
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    Not(in=a, out=ba);
+    Not(in=b, out=bb);
+    Nand(a=ba, b=bb, out=out);
+}

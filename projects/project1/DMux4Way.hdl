@@ -1,0 +1,21 @@
+// DONE
+
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    Not(in=sel[0],out=nsel0);
+    Not(in=sel[1],out=nsel1);
+
+    And(a=nsel0,b=nsel1,out=tempa);
+    And(a=nsel0,b=sel[1],out=tempc); //10
+
+    And(a=sel[0],b=nsel1,out=tempb); //01
+    And(a=sel[0],b=sel[1],out=tempd);
+
+    And(a=tempa, b=in, out=a);
+    And(a=tempb, b=in, out=b);
+    And(a=tempc, b=in, out=c);
+    And(a=tempd, b=in, out=d);
+}
